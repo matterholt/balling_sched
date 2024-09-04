@@ -22,10 +22,10 @@ class Users_Base (BaseModel):
     user_id : int
     fist_name: str
     last_name:str
-    player : str
-    role_id : int
-    contact_id: int
-    teams_id : int
+    player : str # relation one to one
+    role_id : int # relation one to many
+    contact_id: int # relation one to one
+    teams_id : int # relation one to many
 
 # best way to contact the players and
 class User_Contact_Base (BaseModel):
@@ -38,13 +38,25 @@ class Team_Base (BaseModel):
     association_name: str
     group_class: str
     season_year: str
+    coach : str # relation many to one
+    teamates : str # one to many
+    schedule_ids : str # one to many:
+
+
+class Player (BaseModel):
+    name: str
+    years_of_play: str
+    team_playing_for : str # relation one to many
+    guardian_id : str # relation one to many
+
 
 class Field_Satus_Enum (str,Enum):
     home="home"
     vistor="vistor"
     practice = "practice"
 
-class Team_Schedule_Base (BaseModel):
+
+class Team_Schedule (BaseModel):
     start_event_datetime: str
     end_event_datetime: str
     team_field_status: Field_Satus_Enum
