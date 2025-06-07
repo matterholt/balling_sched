@@ -1,0 +1,44 @@
+{% extends '../blocks/base.html' %} {% block title %} {{user_details}}
+{%endblock%} {%block content %}
+
+<main>
+    <!-- The main header used across all the pages of our website -->
+
+    <header>
+        <h1>Header</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/league/">Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- Our page's main content -->
+    <main>
+        <div>
+            <h3>user details</h3>
+            {{user_details}}
+        </div>
+
+        <div>
+            <h2>Associated Teams</h2>
+            <ul>
+                {% for userTeam in teams %}
+                <li>
+                    {{userTeam.team_role}}, {{userTeam.team.call_us}},
+                    {{userTeam.team.division.title}}
+                    <a href="/league/{{user_details}}/team/{{userTeam.team.id}}"
+                        >team page</a
+                    >
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>©Copyright 2050 by nobody. All rights reversed.</p>
+    </footer>
+</main>
+{% endblock %}

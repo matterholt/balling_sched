@@ -1,0 +1,30 @@
+.user_dashboard {
+    display: grid;
+    grid-template-columns: 5fr fr;
+    grid-template-rows: 150px 1fr;
+    grid-template-areas: "top rosterAside" "schedule rosterAside";
+}
+.dashboard_headings {
+    grid-area: top;
+    h1 {
+        margin-bottom: 0px;
+    }
+}
+.dashboard_heading-sub {
+    font-size: 15px;
+}
+.dashboard_schedule {
+    grid-area: schedule;
+}
+.dashboard_roaster {
+    grid-area: rosterAside;
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+li {
+    display: flex;
+    gap: 50px;
+}

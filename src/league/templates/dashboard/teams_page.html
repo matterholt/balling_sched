@@ -1,0 +1,44 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'dashboard/style.css' %}" />
+</head>
+<main class="user_dashboard">
+    <div class="dashboard_headings">
+        <h1>{{team_details.call_us|title }}</h1>
+        <p class="dashboard_heading-sub">
+            {{ team_details.league_name|title }}
+        </p>
+        <p>{{team_details.division.title}}</p>
+        <p>{{team_details.season}}</p>
+    </div>
+
+    <div class="dashboard_schedule">
+        <h3>Schedule</h3>
+        {%for event in team_schedule %}
+        <li>
+            <p>{{event.game_type}}</p>
+            <p>{{event.start_time|date:"Y-m-d"}}</p>
+            <p>{{event.start_time|date:"h:m"}}</p>
+            <p>{{event.end_time|date:"h:m"}}</p>
+            <p>{{event.field_location.location}}</p>
+            <p>{{event.field_location.field_name}}</p>
+        </li>
+        {% endfor %}
+    </div>
+
+    <aside class="dashboard_roaster">
+        <h3>Roster</h3>
+        <ul>
+            {% for admin in teams_admin%}
+            <li>
+                <p>{{admin.contact.name}}</p>
+                <p>{{admin.team_role}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        <div>
+            <a href="{{team_details.id}}/roster">Add Roster</a>
+        </div>
+    </aside>
+</main>
