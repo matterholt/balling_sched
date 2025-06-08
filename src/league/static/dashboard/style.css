@@ -19,6 +19,15 @@
 .dashboard_roaster {
     grid-area: rosterAside;
 }
+.team_schedule_item {
+    display: grid;
+    grid-template-columns: 45px 100px 100px 68px 68px 250px 50px;
+    gap: 20px;
+    ul,
+    li {
+        margin: 0;
+    }
+}
 ul {
     display: flex;
     flex-direction: column;
@@ -27,4 +36,16 @@ ul {
 li {
     display: flex;
     gap: 50px;
+}
+form {
+    margin: 50px;
+    padding: 50px;
+}
+
+.htmx_action-add {
+    border-radius: 15px;
+    outline: solid;
+    padding: 5px 10px;
+    margin: 50px;
+    cursor: pointer;
 }

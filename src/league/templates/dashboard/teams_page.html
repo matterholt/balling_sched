@@ -15,16 +15,43 @@
 
     <div class="dashboard_schedule">
         <h3>Schedule</h3>
-        {%for event in team_schedule %}
-        <li>
-            <p>{{event.game_type}}</p>
-            <p>{{event.start_time|date:"Y-m-d"}}</p>
-            <p>{{event.start_time|date:"h:m"}}</p>
-            <p>{{event.end_time|date:"h:m"}}</p>
-            <p>{{event.field_location.location}}</p>
-            <p>{{event.field_location.field_name}}</p>
-        </li>
-        {% endfor %}
+        <div>
+            <a class="htmx_action-add">OPEN MODal</a>
+            <form
+                hx-post="{% url 'add_to_schedule' %}"
+                hx-target="#tasks"
+                hx-swap="innerHTML"
+            >
+                <!-- https://www.youtube.com/watch?v=PWu3-U-FM-Q&list=PL4cUxeGkcC9hgO93oEHPBMuLA20y0SBVK&index=8 -->
+                {%csrf_token%} {{schedule_add_form}}
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        below
+        <div id="new_thing"></div>
+        above
+        <ul>
+            <li class="team_schedule_item">
+                <p>Count</p>
+                <p>game</p>
+                <p>date</p>
+                <p>start time</p>
+                <p>end time</p>
+                <p>location</p>
+                <p>field</p>
+            </li>
+            {%for event in team_schedule %}
+            <li class="team_schedule_item">
+                <p>{{ forloop.counter }}</p>
+                <p>{{event.game_type}}</p>
+                <p>{{event.start_time|date:"Y-m-d"}}</p>
+                <p>{{event.start_time|date:"h:m"}}</p>
+                <p>{{event.end_time|date:"h:m"}}</p>
+                <p>{{event.field_location.location}}</p>
+                <p>{{event.field_location.field_name}}</p>
+            </li>
+            {% endfor %}h
+        </ul>
     </div>
 
     <aside class="dashboard_roaster">

@@ -1,3 +1,6 @@
+
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -8,11 +11,14 @@
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One"
       rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{% static 'dashboard/style.css' %}" />
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+
   </head>
-  <body>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'  >
       testing
     {% block content %}
     {% endblock %}
   </body>
+
 </html
