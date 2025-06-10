@@ -6,8 +6,13 @@ from .models import Schedule
 class EventForm(forms.ModelForm):
 
 
+
     class Meta:
         model = Schedule
         fields = (
-            'start_time','end_time','game_type','field_location'
+            'start_time','end_time','game_type','field_location','team'
         )
+        widgets = {
+            'start_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'end_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        }

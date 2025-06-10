@@ -38,10 +38,21 @@ def add_to_roster(request,addTo):
     pass
 
 # @login_required # ADD LATER
-@require_http_methods(['PUT'])
-def add_to_schedule(request,data):
-    # print(f"add to schedule, {data}")
-    return render(request, 'blocks/temp.html', {'checking': "add one"})
+@require_http_methods(['POST'])
+def add_to_schedule(request):
+    form = EventForm(request.POST)
+    if form.is_valid():
+        form.save()
+        template = loader.get_template("dashboard/blocks/schedule_row.html")
+        teams_admin  =  Schedule.objects.all()
+        context ={"team_schedule": teams_admin}
+
+        # Return updated fragment
+        return HttpResponse(template.render(context, request))
+    else:
+          form = EventForm()
+
+    return HttpResponse("<p>DID not work.</p>")
 
 
 @require_http_methods(['DELETE'])

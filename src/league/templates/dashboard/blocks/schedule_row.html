@@ -1,0 +1,20 @@
+<li class="team_schedule_item">
+    <p>#</p>
+    <p>game</p>
+    <p>date</p>
+    <p>start time</p>
+    <p>end time</p>
+    <p>location</p>
+    <p>field</p>
+</li>
+{%for event in team_schedule %}
+<li class="team_schedule_item">
+    <p>{{forloop.counter}}</p>
+    <p>{{event.game_type}}</p>
+    <p>{{event.start_time|date:"Y-m-d"}}</p>
+    <p>{{event.start_time|date:"h:m"}}</p>
+    <p>{{event.end_time|date:"h:m"}}</p>
+    <p>{{event.field_location.location}}</p>
+    <p>{{event.field_location.field_name}}</p>
+</li>
+{% endfor %}

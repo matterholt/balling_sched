@@ -41,6 +41,9 @@ form {
     margin: 50px;
     padding: 50px;
 }
+#new_thing {
+    outline: solid;
+}
 
 .htmx_action-add {
     border-radius: 15px;

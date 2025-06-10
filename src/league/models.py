@@ -16,7 +16,7 @@ class Division(models.Model):
     pub_date = models.DateTimeField("date published")
 
     def __str__ (self):
-        return f'{self.title} of {self.league}'
+        return f'{self.title}'
 
 class TeamContact(models.Model):
     name = models.CharField(max_length=200)
@@ -34,7 +34,7 @@ class Team(models.Model):
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.call_us} in {self.division}'
+        return f'{self.call_us}'
 
 class TeamCollection(models.Model):
     TEAM_OPTIONS=[
@@ -47,7 +47,7 @@ class TeamCollection(models.Model):
     team_role = models.CharField(max_length=15, choices=TEAM_OPTIONS)
 
     def __str__(self):
-        return f'{self.contact} is {self.team_role} for {self.team}'
+        return f'{self.contact}'
 
 class Field(models.Model):
     location = models.CharField(max_length=200)
@@ -55,7 +55,7 @@ class Field(models.Model):
     division = models.ForeignKey(Division, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.field_name} at {self.location}'
+        return f'{self.field_name}'
 
 class Schedule(models.Model):
     GAME_OPTIONS=[
