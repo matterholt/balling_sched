@@ -7,12 +7,7 @@
     {% for task in tasks %}
     <div>
         {{ forloop.counter }} {{ task.title }}
-        <a
-            class="block mr-2 hover:text-gray-600"
-            hx-delete="{% url 'delete_task' task.id %}"
-        >
-            Delete?
-        </a>
+        <a class="block mr-2 hover:text-gray-600"> Delete? </a>
     </div>
     {% endfor %}
 </div>

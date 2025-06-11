@@ -20,10 +20,11 @@
                 <a class="htmx_action-add">OPEN MODal</a>
 
                 <form
-                    hx-post="{% url 'add_to_schedule' %}"
+                    hx-post="{% url 'add_to_schedule' team_id=team_details.id %}"
                     hx-target="#schedule_list"
                     hx-swap="outerHTML"
                 >
+                    <h4>{{team_details.call_us|title }}</h4>
                     {% csrf_token %}
                     <!-- https://www.youtube.com/watch?v=PWu3-U-FM-Q&list=PL4cUxeGkcC9hgO93oEHPBMuLA20y0SBVK&index=8 -->
                     {{schedule_add_form}}

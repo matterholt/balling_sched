@@ -21,7 +21,7 @@
 }
 .team_schedule_item {
     display: grid;
-    grid-template-columns: 45px 100px 100px 68px 68px 250px 50px;
+    grid-template-columns: 45px 100px 100px 68px 68px 250px 50px 1fr;
     gap: 20px;
     ul,
     li {

@@ -39,14 +39,15 @@ def add_to_roster(request,addTo):
 
 # @login_required # ADD LATER
 @require_http_methods(['POST'])
-def add_to_schedule(request):
+def add_to_schedule(request,team_id):
     form = EventForm(request.POST)
+
+    # TODO:  get data from team name
     if form.is_valid():
         form.save()
         template = loader.get_template("dashboard/blocks/schedule_row.html")
         teams_admin  =  Schedule.objects.all()
         context ={"team_schedule": teams_admin}
-
         # Return updated fragment
         return HttpResponse(template.render(context, request))
     else:
@@ -56,7 +57,11 @@ def add_to_schedule(request):
 
 
 @require_http_methods(['DELETE'])
-def delete_task(request, id):
-    Division.objects.filter(id=id).delete()
-    tasks = Division.objects.all()
-    return render(request, 'dashboard/tasks_list.html', {'tasks': tasks})
+def delete_event_schedule(request, event_id):
+    Schedule.objects.filter(id=event_id).delete()
+
+    teams_events = Schedule.objects.filter(team = team_id)
+    context ={"team_schedule": teams_events}
+
+    template = loader.get_template("dashboard/blocks/schedule_row.html")
+    return HttpResponse(template.render(context, request))

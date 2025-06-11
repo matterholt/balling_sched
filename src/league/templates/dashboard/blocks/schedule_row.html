@@ -16,5 +16,8 @@
     <p>{{event.end_time|date:"h:m"}}</p>
     <p>{{event.field_location.location}}</p>
     <p>{{event.field_location.field_name}}</p>
+    <button hx-delete="{% url 'delete_event_schedule' event_id=event.id %}">
+        delete
+    </button>
 </li>
 {% endfor %}
