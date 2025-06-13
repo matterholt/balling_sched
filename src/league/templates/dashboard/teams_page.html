@@ -1,57 +1,43 @@
 {% extends '../blocks/base.html' %} {% load static %} {% block title %} TESTINGS
 {%endblock%} {%block content %}
 <head>
-    <head>
-        <link rel="stylesheet" href="{% static 'dashboard/style.css' %}" />
-    </head>
-    <main class="user_dashboard">
-        <div class="dashboard_headings">
-            <h1>{{team_details.call_us|title }}</h1>
-            <p class="dashboard_heading-sub">
-                {{ team_details.league_name|title }}
-            </p>
-            <p>{{team_details.division.title}}</p>
-            <p>{{team_details.season}}</p>
-        </div>
-
-        <div class="dashboard_schedule">
-            <h3>Schedule</h3>
-            <div>
-                <a class="htmx_action-add">OPEN MODal</a>
-
-                <form
-                    hx-post="{% url 'add_to_schedule' team_id=team_details.id %}"
-                    hx-target="#schedule_list"
-                    hx-swap="outerHTML"
-                >
-                    <h4>{{team_details.call_us|title }}</h4>
-                    {% csrf_token %}
-                    <!-- https://www.youtube.com/watch?v=PWu3-U-FM-Q&list=PL4cUxeGkcC9hgO93oEHPBMuLA20y0SBVK&index=8 -->
-                    {{schedule_add_form}}
-                    <button type="submit">Add</button>
-                </form>
-            </div>
-
-            <div id="greeting"></div>
-            <ul id="schedule_list">
-                {% include "dashboard/blocks/schedule_row.html" %}
-            </ul>
-        </div>
-
-        <aside class="dashboard_roaster">
-            <h3>Roster</h3>
-            <ul>
-                {% for admin in teams_admin%}
-                <li>
-                    <p>{{admin.contact.name}}</p>
-                    <p>{{admin.team_role}}</p>
-                </li>
-                {% endfor %}
-            </ul>
-            <div>
-                <a href="{{team_details.id}}/roster">Add Roster</a>
-            </div>
-        </aside>
-    </main>
-    {%endblock%}
+    <link rel="stylesheet" href="{% static 'dashboard/style.css' %}" />
 </head>
+<main class="user_dashboard">
+    <div class="dashboard_headings">
+        <h1>{{team_details.call_us|title }}</h1>
+        <p class="dashboard_heading-sub">
+            {{ team_details.league_name|title }}
+        </p>
+        <p>{{team_details.division.title}}</p>
+        <p>{{team_details.season}}</p>
+    </div>
+
+    <div class="dashboard_schedule">
+        <div class="dashboard_schedule_actions">
+            {% include "dashboard/blocks/schedule_modal.html" %}
+            <button>download schedule</button>
+        </div>
+
+        <ul id="schedule_list">
+            {% include "dashboard/blocks/schedule_row.html" %}
+        </ul>
+    </div>
+
+    <aside class="dashboard_roaster">
+        <h3>Roster</h3>
+        <ul>
+            {% for admin in teams_admin%}
+            <li>
+                <p>{{admin.contact.name}}</p>
+                <p>{{admin.team_role}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        <div>
+            <a href="{{team_details.id}}/roster">Add Roster</a>
+        </div>
+    </aside>
+</main>
+
+{%endblock%}

@@ -69,7 +69,6 @@ class Schedule(models.Model):
     end_time  = models.DateTimeField("end of event")
     game_type= models.CharField(max_length=15, choices=GAME_OPTIONS)
     field_location = models.ForeignKey(Field, on_delete=models.CASCADE)
-
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     # opponents  = models.ForeignKey(Team, on_delete=models.CASCADE)
 

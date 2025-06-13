@@ -1,0 +1,38 @@
+<button id="modalOpen">Add Schedules</button>
+
+<dialog>
+    <div>
+        <h3>Add Event</h3>
+        <form
+            hx-post="{% url 'add_to_schedule' team_id=team_details.id %}"
+            hx-target="#schedule_list"
+            hx-swap="outerHTML"
+        >
+            <h4>{{team_details.call_us|title }}</h4>
+            {% csrf_token %}
+            <!-- https://www.youtube.com/watch?v=PWu3-U-FM-Q&list=PL4cUxeGkcC9hgO93oEHPBMuLA20y0SBVK&index=8 -->
+            {{schedule_add_form}}
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <div>
+        <h3>Upload Schedule</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %} {{ csv_schdule_form.as_p }}
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    <button autofocus id="modalClose">Close</button>
+</dialog>
+<script>
+    const dialog = document.querySelector("dialog");
+    const showButton = document.querySelector("#modalOpen");
+    const closeButton = document.querySelector("#modalClose");
+
+    showButton.addEventListener("click", () => {
+        dialog.showModal();
+    });
+    closeButton.addEventListener("click", () => {
+        dialog.close();
+    });
+</script>

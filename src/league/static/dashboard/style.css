@@ -1,54 +1,45 @@
+main {
+    min-height: 100vh;
+}
+
 .user_dashboard {
     display: grid;
     grid-template-columns: 5fr fr;
     grid-template-rows: 150px 1fr;
     grid-template-areas: "top rosterAside" "schedule rosterAside";
 }
-.dashboard_headings {
-    grid-area: top;
-    h1 {
-        margin-bottom: 0px;
-    }
+.user_layout_header {
+    display: flex;
+    justify-content: space-between;
 }
-.dashboard_heading-sub {
-    font-size: 15px;
-}
-.dashboard_schedule {
-    grid-area: schedule;
-}
-.dashboard_roaster {
-    grid-area: rosterAside;
-}
-.team_schedule_item {
+.user_nextup_event {
     display: grid;
-    grid-template-columns: 45px 100px 100px 68px 68px 250px 50px 1fr;
-    gap: 20px;
-    ul,
-    li {
-        margin: 0;
-    }
+    grid-template-rows: 50px 1fr;
+    margin-bottom: 50px;
 }
-ul {
+
+.teams_schedules {
+    display: grid;
+    grid-template-rows: 50px 1fr 35px;
+    outline: solid;
+}
+.section_header {
+    grid-row: 1;
+    place-self: center;
+}
+.nextup_list {
+    margin: 0px;
+    padding: 15px;
+    grid-row: 2;
+    border-radius: 15px;
+    background-color: #ffffff30;
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-li {
-    display: flex;
-    gap: 50px;
-}
-form {
-    margin: 50px;
-    padding: 50px;
-}
-#new_thing {
-    outline: solid;
-}
 
-.htmx_action-add {
-    border-radius: 15px;
-    outline: solid;
-    padding: 5px 10px;
-    margin: 50px;
-    cursor: pointer;
+.schedule_heading {
+    display: flex;
+    justify-content: space-evenly;
 }

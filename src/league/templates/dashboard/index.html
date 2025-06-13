@@ -1,27 +1,63 @@
 {% extends '../blocks/base.html' %} {% block title %} {{user_details}}
-{%endblock%} {%block content %}
+{%endblock%} {%block content %} <
 
-<main>
-    <!-- The main header used across all the pages of our website -->
-
-    <header>
-        <h1>Header</h1>
-    </header>
-
-    <nav>
+<header class="user_layout_header">
+    <div>
+        <h2> {{user_details.name|title}}<i class="ph-fill ph-heart" style="color: hotpink"></i></h2>
         <ul>
-            <li><a href="/league/">Home</a></li>
+            <li>Phone: {{user_details.phone_number}}</li>
+            <li>Email: {{user_details.email}}</li>
         </ul>
-    </nav>
+    </div>
+    <h1>Teams Schedule</h1>
+    <div>
 
-    <!-- Our page's main content -->
+    <button>LOGOUT</button>
+    </div>
+</header>
     <main>
-        <div>
-            <h3>user details</h3>
-            {{user_details}}
+        <div class="user_nextup_event">
+            <h3 class="section_header">Next Up Event</h3>
+            <ul class="nextup_list">
+                <li>
+                    scrimmage,
+                    2025-06-06,
+                    02:06,
+                    02:06,
+                    COMMUNITY CENTER,
+                    field 5
+                </li>
+                <li>
+                    2025-06-06 at 2:06 have a Scrimmage on field 5 at the community center;
+                </li>
+            </ul>
         </div>
 
-        <div>
+        <div class="teams_schedules">
+            <div class="schedule_heading">
+            <h3 class="section_header">
+                Tigers Schedule : loliPops</h3>
+
+        <div >
+            Coach: MA
+            Ast.coach: JA
+        </div>
+
+            </div>
+<ul>
+    <li>i</li>
+    <li>i</li>
+    <li>i</li>
+    <li>i</li>
+    <li>i</li>
+    <li>i</li>
+    <li>i</li>
+
+</ul>
+
+<button id=""><i class="ph ph-caret-double-down"></i></button>
+        </div>
+        <!-- <div>
             <h2>Associated Teams</h2>
             <ul>
                 {% for userTeam in teams %}
@@ -34,12 +70,8 @@
                 </li>
                 {% endfor %}
             </ul>
-        </div>
+        </div> -->
     </main>
-    <div>
-        <h4>TASK LIST</h4>
-        {% include "./tasks_list.html" %}
-    </div>
 
     <footer>
         <p>©Copyright 2050 by nobody. All rights reversed.</p>
