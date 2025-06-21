@@ -1,5 +1,7 @@
 import csv
 import io
+from collections import defaultdict
+
 
 from django.shortcuts import render, redirect
 from django.template import loader
@@ -9,8 +11,9 @@ from django.contrib import messages
 from django.utils.dateparse import parse_datetime
 
 
+from string import printable
 # Create your views here.
-from .models import Season,TeamContact,TeamCollection,Team,Schedule,Division,Field
+from .models import Season,TeamContact,TeamCollection,Team,Schedule,Field
 from .forms import EventForm,ScheduleCSVUploadForm
 
 def index(request):
@@ -21,23 +24,41 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
+def grab_team_data(team_id):
+    team_asigned = Team.objects.get(call_us = team_id.team)
+    team_schedule = Schedule.objects.filter(team = team_id.team)
+
+
+    return [team_asigned, team_schedule]
+
+
 def user_dashboard(request, user_name):
+
     user_details = TeamContact.objects.get(name = user_name)
+    users_team = TeamCollection.objects.filter(contact = user_details.id)
 
-    associated_team = TeamCollection.objects.filter(contact = user_details.id)
+    all_team_schedule =defaultdict(list)
+    for team in users_team:
+        team_name = team.team.call_us
+        team_id = team.team.id
+        sched = Schedule.objects.filter(team =  team_id)
 
-    for i in associated_team:
-        print(i.team)
-        team_asigned = Team.objects.get(call_us = i.team)
-        team_schedule = Schedule.objects.filter(team = i.team)
-        print(team_asigned)
-        print(team_schedule)
+
+        print(sched)
+        all_team_schedule[team_name].append(team)
+
+    # print(all_team_schedule)
+    # for i in all_team_schedule:
+        # for j in all_team_schedule[i]:
+            # print(j)
+
 
 
 
 
     template = loader.get_template("dashboard/index.html")
-    context = {"user_details": user_details, "teams": associated_team}
+    context = {"user_details": user_details, "teams_name_schedule": all_team_schedule  }
+
     return HttpResponse(template.render(context, request))
 
 def user_team(request,user_name,team_id):
@@ -106,6 +127,28 @@ def upload_schedule_csv(request):
 
     return render(request, 'schedule/upload_csv.html', {'form': form})
 
+def user_teams_schedule(request,user_name): ## might not need this
+    # user = request.user
+    user = TeamContact.objects.get(name = user_name)
+    users_team = TeamCollection.objects.filter(contact = user.id)
+
+    user_teams = users_team.prefetch_related('schedules').all()
+    print(user_teams)
+    # Organize data for template
+    teams_with_schedules = []
+    for team in user_teams:
+        team_data = {
+            'team': team,
+            'schedules': team.schedules.all()
+        }
+        teams_with_schedules.append(team_data)
+
+    context = {
+         'teams_with_schedules': teams_with_schedules,
+         'user': user,
+     }
+
+    return render(request, 'dashboard/user_teams_schedule.html', context)
 
 
 

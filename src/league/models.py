@@ -1,5 +1,7 @@
 from datetime import datetime
 from django.db import models
+from django.urls import reverse
+
 
 class Season(models.Model):
     description = models.CharField(max_length=200,default=f"Season {datetime.now().year}")
@@ -34,7 +36,10 @@ class Team(models.Model):
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.call_us}'
+        return self.call_us
+
+    # def get_absolute_url(self):
+    #     return reverse('team_detail', kwargs={'pk': self.pk})
 
 class TeamCollection(models.Model):
     TEAM_OPTIONS=[
@@ -45,6 +50,7 @@ class TeamCollection(models.Model):
     contact = models.ForeignKey(TeamContact, on_delete=models.CASCADE)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     team_role = models.CharField(max_length=15, choices=TEAM_OPTIONS)
+    # members = models.ManyToManyField(TeamContact, related_name='teams', blank=True)
 
     def __str__(self):
         return f'{self.contact}'
@@ -65,16 +71,17 @@ class Schedule(models.Model):
         ("playoff","playoff")
     ]
 
+
     start_time  = models.DateTimeField("start of event")
     end_time  = models.DateTimeField("end of event")
     game_type= models.CharField(max_length=15, choices=GAME_OPTIONS)
     field_location = models.ForeignKey(Field, on_delete=models.CASCADE)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     # opponents  = models.ForeignKey(Team, on_delete=models.CASCADE)
-
+    # class Meta:
+    #     ordering = ['day_of_week', 'start_time']
     def __str__(self):
-        return f'{self.game_type} for {self.team}'
-
+        return f"{self.team.call_us} - {self.game_type} "
     # def duration(self) -> str:
 
     #     fmt = "%H:%M"

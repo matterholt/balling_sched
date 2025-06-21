@@ -3,7 +3,12 @@
 
 <header class="user_layout_header">
     <div>
-        <h2> {{user_details.name|title}}<i class="ph-fill ph-heart" style="color: hotpink"></i></h2>
+        <h2>
+            {{user_details.name|title}}<i
+                class="ph-fill ph-heart"
+                style="color: hotpink"
+            ></i>
+        </h2>
         <ul>
             <li>Phone: {{user_details.phone_number}}</li>
             <li>Email: {{user_details.email}}</li>
@@ -11,70 +16,37 @@
     </div>
     <h1>Teams Schedule</h1>
     <div>
-
-    <button>LOGOUT</button>
+        <button>LOGOUT</button>
     </div>
 </header>
-    <main>
-        <div class="user_nextup_event">
-            <h3 class="section_header">Next Up Event</h3>
-            <ul class="nextup_list">
-                <li>
-                    scrimmage,
-                    2025-06-06,
-                    02:06,
-                    02:06,
-                    COMMUNITY CENTER,
-                    field 5
-                </li>
-                <li>
-                    2025-06-06 at 2:06 have a Scrimmage on field 5 at the community center;
-                </li>
-            </ul>
+<main>
+    <div class="user_nextup_event">
+        <h3 class="section_header">Next Up Event</h3>
+        <ul class="nextup_list">
+            <li>
+                scrimmage, 2025-06-06, 02:06, 02:06, COMMUNITY CENTER, field 5
+            </li>
+            <li>
+                2025-06-06 at 2:06 have a Scrimmage on field 5 at the community
+                center;
+            </li>
+        </ul>
+    </div>
+    {% for team in teams_name_schedule %}
+    <div class="teams_schedules">
+        <div class="schedule_heading">
+            <h3 class="section_header">{{team}} : loliPops</h3>
+
+            <div>Coach: MA Ast.coach: JA</div>
         </div>
+        <ul></ul>
 
-        <div class="teams_schedules">
-            <div class="schedule_heading">
-            <h3 class="section_header">
-                Tigers Schedule : loliPops</h3>
-
-        <div >
-            Coach: MA
-            Ast.coach: JA
-        </div>
-
-            </div>
-<ul>
-    <li>i</li>
-    <li>i</li>
-    <li>i</li>
-    <li>i</li>
-    <li>i</li>
-    <li>i</li>
-    <li>i</li>
-
-</ul>
-
-<button id=""><i class="ph ph-caret-double-down"></i></button>
-        </div>
-        <!-- <div>
-            <h2>Associated Teams</h2>
-            <ul>
-                {% for userTeam in teams %}
-                <li>
-                    {{userTeam.team_role}}, {{userTeam.team.call_us}},
-                    {{userTeam.team.division.title}}
-                    <a href="/league/{{user_details}}/team/{{userTeam.team.id}}"
-                        >team page</a
-                    >
-                </li>
-                {% endfor %}
-            </ul>
-        </div> -->
-    </main>
-
-    <footer>
-        <p>©Copyright 2050 by nobody. All rights reversed.</p>
-    </footer>
+        <button id=""><i class="ph ph-caret-double-down"></i></button>
+    </div>
+    {% endfor %}
 </main>
+
+<footer>
+    <p>©Copyright 2050 by nobody. All rights reversed.</p>
+</footer>
 {% endblock %}
