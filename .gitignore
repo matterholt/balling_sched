@@ -3,9 +3,15 @@
 *.pot
 *.pyc
 __pycache__
+
+media
+
+
+
 db.sqlite3
 *.db
-media
+*/storage/*
+data_sample/*
 
 # Backup files #
 *.bak
