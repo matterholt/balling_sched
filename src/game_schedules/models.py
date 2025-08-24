@@ -1,11 +1,13 @@
 from django.db import models
 
+
 class TeamDivision(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
 
     def __str__(self):
-        return f'{self.name} - {self.description}'
+        return f"{self.name} - {self.description}"
+
 
 class Venue(models.Model):
     short_name = models.CharField(max_length=200)
@@ -16,7 +18,8 @@ class Venue(models.Model):
     zip_code = models.CharField(max_length=200)
 
     def __str__(self):
-        return f'{self.name} - {self.address} {self.city} {self.state} {self.zip_code}'
+        return f"{self.name} - {self.address} {self.city} {self.state} {self.zip_code}"
+
 
 class SeasonSchedule(models.Model):
     date = models.DateField()
@@ -29,4 +32,4 @@ class SeasonSchedule(models.Model):
     division = models.ForeignKey(TeamDivision, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'å{self.date} {self.time}'
+        return f"å{self.date} {self.time}"

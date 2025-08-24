@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('league', '0003_remove_schedule_date_season_description_and_more'),
+        ("league", "0003_remove_schedule_date_season_description_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='season',
-            name='end_date',
-            field=models.DateField(verbose_name='end of season'),
+            model_name="season",
+            name="end_date",
+            field=models.DateField(verbose_name="end of season"),
         ),
         migrations.AlterField(
-            model_name='season',
-            name='start_date',
-            field=models.DateField(verbose_name='start of season'),
+            model_name="season",
+            name="start_date",
+            field=models.DateField(verbose_name="start of season"),
         ),
     ]

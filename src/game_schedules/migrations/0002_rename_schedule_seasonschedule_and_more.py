@@ -4,18 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('game_schedules', '0001_initial'),
+        ("game_schedules", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Schedule',
-            new_name='SeasonSchedule',
+            old_name="Schedule",
+            new_name="SeasonSchedule",
         ),
         migrations.RenameModel(
-            old_name='GameClass',
-            new_name='TeamDivision',
+            old_name="GameClass",
+            new_name="TeamDivision",
         ),
     ]

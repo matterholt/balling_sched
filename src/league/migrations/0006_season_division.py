@@ -5,16 +5,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('league', '0005_alter_season_description'),
+        ("league", "0005_alter_season_description"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='season',
-            name='division',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='league.division'),
+            model_name="season",
+            name="division",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="league.division",
+            ),
             preserve_default=False,
         ),
     ]

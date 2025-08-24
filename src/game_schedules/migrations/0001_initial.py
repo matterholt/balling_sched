@@ -5,44 +5,78 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='GameClass',
+            name="GameClass",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('description', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("description", models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
-            name='Venue',
+            name="Venue",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('short_name', models.CharField(max_length=200)),
-                ('name', models.CharField(max_length=200)),
-                ('address', models.CharField(max_length=200)),
-                ('city', models.CharField(max_length=200)),
-                ('state', models.CharField(max_length=200)),
-                ('zip_code', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("short_name", models.CharField(max_length=200)),
+                ("name", models.CharField(max_length=200)),
+                ("address", models.CharField(max_length=200)),
+                ("city", models.CharField(max_length=200)),
+                ("state", models.CharField(max_length=200)),
+                ("zip_code", models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
-            name='Schedule',
+            name="Schedule",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateField()),
-                ('time', models.TimeField()),
-                ('field', models.CharField(max_length=200)),
-                ('home', models.CharField(max_length=200)),
-                ('visitor', models.CharField(max_length=200)),
-                ('division', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='game_schedules.gameclass')),
-                ('location', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='game_schedules.venue')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date", models.DateField()),
+                ("time", models.TimeField()),
+                ("field", models.CharField(max_length=200)),
+                ("home", models.CharField(max_length=200)),
+                ("visitor", models.CharField(max_length=200)),
+                (
+                    "division",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="game_schedules.gameclass",
+                    ),
+                ),
+                (
+                    "location",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="game_schedules.venue",
+                    ),
+                ),
             ],
         ),
     ]

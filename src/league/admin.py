@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Division,Season,TeamContact,Team,TeamCollection,Field,Schedule
+from .models import Division, Season, TeamContact, Team, TeamCollection, Field, Schedule
 # Register your models here.
 
 admin.site.register(Division)

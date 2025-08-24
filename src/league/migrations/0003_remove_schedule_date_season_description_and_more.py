@@ -4,39 +4,38 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('league', '0002_alter_schedule_end_time_alter_schedule_start_time'),
+        ("league", "0002_alter_schedule_end_time_alter_schedule_start_time"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='schedule',
-            name='date',
+            model_name="schedule",
+            name="date",
         ),
         migrations.AddField(
-            model_name='season',
-            name='description',
-            field=models.CharField(default='previous', max_length=200),
+            model_name="season",
+            name="description",
+            field=models.CharField(default="previous", max_length=200),
         ),
         migrations.AlterField(
-            model_name='schedule',
-            name='end_time',
-            field=models.DateTimeField(verbose_name='end of event'),
+            model_name="schedule",
+            name="end_time",
+            field=models.DateTimeField(verbose_name="end of event"),
         ),
         migrations.AlterField(
-            model_name='schedule',
-            name='start_time',
-            field=models.DateTimeField(verbose_name='start of event'),
+            model_name="schedule",
+            name="start_time",
+            field=models.DateTimeField(verbose_name="start of event"),
         ),
         migrations.AlterField(
-            model_name='season',
-            name='end_date',
-            field=models.DateField(auto_now=True, verbose_name='end of season'),
+            model_name="season",
+            name="end_date",
+            field=models.DateField(auto_now=True, verbose_name="end of season"),
         ),
         migrations.AlterField(
-            model_name='season',
-            name='start_date',
-            field=models.DateField(auto_now=True, verbose_name='start of season'),
+            model_name="season",
+            name="start_date",
+            field=models.DateField(auto_now=True, verbose_name="start of season"),
         ),
     ]

@@ -4,19 +4,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('league', '0008_remove_season_division_division_season'),
+        ("league", "0008_remove_season_division_division_season"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='division',
-            name='season',
+            model_name="division",
+            name="season",
         ),
         migrations.AddField(
-            model_name='team',
-            name='league_name',
-            field=models.CharField(default='league name', max_length=200),
+            model_name="team",
+            name="league_name",
+            field=models.CharField(default="league name", max_length=200),
         ),
     ]

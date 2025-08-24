@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('league', '0004_alter_season_end_date_alter_season_start_date'),
+        ("league", "0004_alter_season_end_date_alter_season_start_date"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='season',
-            name='description',
-            field=models.CharField(default='Season 2025', max_length=200),
+            model_name="season",
+            name="description",
+            field=models.CharField(default="Season 2025", max_length=200),
         ),
     ]

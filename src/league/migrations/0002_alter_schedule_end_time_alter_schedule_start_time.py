@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('league', '0001_initial'),
+        ("league", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='schedule',
-            name='end_time',
+            model_name="schedule",
+            name="end_time",
             field=models.DateTimeField(max_length=200),
         ),
         migrations.AlterField(
-            model_name='schedule',
-            name='start_time',
+            model_name="schedule",
+            name="start_time",
             field=models.DateTimeField(max_length=200),
         ),
     ]
