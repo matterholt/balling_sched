@@ -4,6 +4,7 @@ import csv
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.db import IntegrityError
 
 from .models import Venue
 from .forms import VenueForm, UploadVenueForm
@@ -31,6 +32,8 @@ class VenueListView(ListView):
 
 
 def upload_csv(request):
+    duplicated_entries = []
+
     if request.method == "POST":
         form = UploadVenueForm(request.POST, request.FILES)
         if form.is_valid():
@@ -40,25 +43,35 @@ def upload_csv(request):
                 messages.error(
                     request, "Invalid file format. Please upload a CSV file."
                 )
-                return redirect("upload_csv")
+                return redirect("locations_list")
 
             file_data = csv_file.read().decode("utf-8").splitlines()
             reader = csv.DictReader(file_data)
 
             for row in reader:
-                print(row)
-                Venue.objects.get_or_create(
-                    short_name=row["short_name"],
-                    defaults={
-                        "name": row["name"],
-                        "address": row["address"],
-                        "city": row["city"],
-                        "state": row["state"],
-                        "zip_code": row["zip_code"],
-                    },
-                )
+                try:
+                    Venue.objects.create(
+                        short_name=row["short_name"],
+                        name=row["name"],
+                        address=row["address"],
+                        city=row["city"],
+                        state=row["state"],
+                        zip_code=row["zip_code"],
+                    )
+                except IntegrityError:
+                    duplicated_entries.append(row["short_name"])
+
+                    continue
+
+        print("\nGETTIT")
+        print(duplicated_entries)
+        if duplicated_entries:
+            messages.warning(
+                request, f"Skipped duplicates: {', '.join(duplicated_entries)}"
+            )
+        else:
             messages.success(request, "CSV file imported successfully!")
-            return redirect("upload_csv")
+        # return redirect("locations_list")
     else:
         form = UploadVenueForm()
 

@@ -10,8 +10,8 @@ class TeamDivision(models.Model):
 
 
 class Venue(models.Model):
-    short_name = models.CharField(max_length=200)
-    name = models.CharField(max_length=200)
+    short_name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=200, unique=True)
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     state = models.CharField(max_length=200)
