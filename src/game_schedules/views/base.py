@@ -1,37 +1,30 @@
 import csv
-
-
-from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView
 from django.db import IntegrityError
 
-from .models import Venue
-from .forms import VenueForm, UploadVenueForm
+from ..models import Venue
+from ..forms import  UploadVenueForm
 
-from django.http import HttpResponse
 
 
 # Create your views here.
 def index(request):
     return HttpResponse("Schedules for the upcoming season.")
 
-
-def year(request, year):
-    # Fetch and render the full schedule
-    return HttpResponse(f"Full schedule for the upcoming season.asd for {year}")
-
-
-# CRUD for locations
-
-
-class VenueListView(ListView):
+class ScheduledGames(ListView):
     model = Venue
-    template_name = "locations/locations_list.html"
-    context_object_name = "locations"
+
+    template_name = "team_schedule/index.html"
+    context_object_name = "games"
 
 
-def upload_csv(request):
+
+
+# covert to classes
+def spreadsheet_upload(request):
     duplicated_entries = []
 
     if request.method == "POST":
@@ -63,8 +56,6 @@ def upload_csv(request):
 
                     continue
 
-        print("\nGETTIT")
-        print(duplicated_entries)
         if duplicated_entries:
             messages.warning(
                 request, f"Skipped duplicates: {', '.join(duplicated_entries)}"
@@ -75,4 +66,4 @@ def upload_csv(request):
     else:
         form = UploadVenueForm()
 
-    return render(request, "locations/csv_upload.html", {"form": form})
+    return render(request, "locations/spreadsheet_upload.html", {"form": form})

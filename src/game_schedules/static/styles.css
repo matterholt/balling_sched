@@ -1,0 +1,13 @@
+.site_navigation-topBar {
+  display: flex;
+  justify-content: space-around;
+  li {
+    list-style: none;
+  }
+}
+
+.page_actions {
+  background-color: #cec8c866;
+  border-radius: 10px;
+  padding: 10px;
+}

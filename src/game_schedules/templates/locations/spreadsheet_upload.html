@@ -11,11 +11,15 @@
     </form>
 
     {% if messages %}
-    <ul>
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
+    <div>
+      <a href="{% url 'locations_list' %}">All Venues</a>
+
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
     {% endif %}
   </body>
 </html>

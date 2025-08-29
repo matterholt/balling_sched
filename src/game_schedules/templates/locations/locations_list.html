@@ -1,9 +1,24 @@
+{% extends '../base.html' %} {% block title %} {{user_details}} {%endblock%}
+{%block content %}
+
 <h1>Venues</h1>
 <div>
-  <a href="{% url 'upload_csv' %}">Upload file</a>
+  <a href="{% url 'spreadsheet_upload' %}">Upload file</a>
 </div>
-<ul>
+<ul id="venue-list">
   {% for venue in locations %}
-  <li>{{ venue.name }} - {{ venue.city }}, {{ venue.state }}</li>
+  <div id="venue-{{ venue.pk }}">
+    venue-{{venue.pk}}
+    <li>{{ venue.name }} - {{ venue.city }}, {{ venue.state }}</li>
+  </div>
+  <button
+    hx-delete="{% url 'delete_location_entry' venue.pk %}"
+    hx-target="#venue-{{ venue.pk }}"
+    hx-swap="outerHTML"
+  >
+    delete {{venue.pk}}
+  </button>
   {% endfor %}
 </ul>
+
+{%endblock%}

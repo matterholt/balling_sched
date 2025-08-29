@@ -1,12 +1,16 @@
 from django.urls import path
-from .views import VenueListView
+from .views.base import ScheduledGames
+from .views.venues import VenueListView
+from .views.api import VenueDeleteHTMX
+from .views.base import spreadsheet_upload
 # VenueCreateView, VenueUpdateView, VenueDeleteView
 
-from . import views
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", ScheduledGames.as_view(), name="index"),
     path("locations", VenueListView.as_view(), name="locations_list"),
-    path("locations/upload-csv/", views.upload_csv, name="upload_csv"),
-    path("<str:year>", views.year, name="year"),
+    path("locations/spreadsheet_upload/", spreadsheet_upload, name="spreadsheet_upload"),
+
+
+    path("action/delete/<int:pk>", VenueDeleteHTMX.as_view(), name="delete_location_entry")
 ]

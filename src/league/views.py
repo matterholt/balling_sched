@@ -129,7 +129,7 @@ def upload_schedule_csv(request):
     else:
         form = ScheduleCSVUploadForm()
 
-    return render(request, "schedule/upload_csv.html", {"form": form})
+    return render(request, "schedule/spreadsheet_upload.html", {"form": form})
 
 
 def user_teams_schedule(request, user_name):  ## might not need this

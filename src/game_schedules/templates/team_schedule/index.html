@@ -1,0 +1,29 @@
+{% extends '../base.html' %} {%block content %}
+
+<h1>Con-Kord Rec. Soccer Schedule</h1>
+<div>
+  Schedule for 2025 season
+
+</div>
+<nav>
+  <ul class="site_navigation-topBar">
+    <li><a href={% url 'index' %}>Schedule</a></li>
+    <li><a href={% url 'locations_list' %}>Venues</a></li>
+  </ul>
+</nav>
+<nav>
+  <ul class="page_actions site_navigation-topBar">
+    <li>Filter</li>
+    <li>Download</li>
+    <li>
+      <a href={% url 'spreadsheet_upload'%}>Upload</a>
+    </li>
+  </ul>
+</nav>
+<div>
+
+
+  TESTGIN
+</div>
+
+{%endblock%}
