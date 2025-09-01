@@ -4,7 +4,8 @@ Application that will show schedule games for all teams in the league.
 
 
 
-<strong>League</strong> app is exploring, figuring out some tech out</strong>
+<strong>League</strong> app is exploring, figuring out some tech out
+
 <strong>game_schedule</strong> is primary focused with getting the game schedules on teh web
 
 
