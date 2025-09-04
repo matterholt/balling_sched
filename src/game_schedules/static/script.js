@@ -1,8 +1,8 @@
 const dialog = document.querySelector("dialog");
-const showButton = document.querySelector("dialog + button");
+const showButton = document.querySelector("#newLocation");
 const closeButton = document.querySelector("dialog button");
+console.log("querySelector12", showButton);
 
-// "Show the dialog" button opens the dialog modally
 showButton.addEventListener("click", () => {
   dialog.showModal();
 });

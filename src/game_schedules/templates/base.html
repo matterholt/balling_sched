@@ -23,7 +23,7 @@
     />
   </head>
   <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'  >
-
+{% load partials %}
     {% block content %}
     {% endblock %}
   </body>
