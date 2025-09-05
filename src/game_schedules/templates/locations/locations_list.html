@@ -1,16 +1,22 @@
-{% extends "../base.html" %} {% load partials %} {% block content %}
+{% extends "../base.html" %} {% block content %}
 <h1>Venues</h1>
 <div>
   <a href="{%url 'index'%}">Main</a>
 </div>
 <div class="page_actions">
   <a href="{% url 'spreadsheet_upload' %}">Upload file</a>
-  <div>
-    {% partialdef test-partial %}
-    <p>TEST-PARTIAL-CONTENT-test</p>
-    {% endpartialdef test-partial %}
-  </div>
-  {% partial test-partial %}
+  <div></div>
+  <div id="dialog"></div>
+  <p>below</p>
+  <button
+    hx-get="{% url 'create_location' %}"
+    hx-target="#dialog"
+    hx-swap="innerHTML"
+  >
+    Add Venue 3
+  </button>
+  <p>above</p>
+
   <ul id="venue-list">
     {% for venue in locations %}
     <div class="vunue_list-item" id="venue-{{ venue.pk }}">

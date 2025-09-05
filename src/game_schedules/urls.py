@@ -1,7 +1,7 @@
 from django.urls import path
 from .views.base import ScheduledGames
-from .views.venues import VenueListView
-from .views.api import VenueDeleteHTMX,VenueCreateView
+from .views.venues import VenueListView, VenueCreateView
+from .views.api import VenueDeleteHTMX
 from .views.base import spreadsheet_upload
 # , VenueUpdateView, VenueDeleteView
 
