@@ -1,9 +1,13 @@
-<form
-  method="post"
-  hx-post="{% url 'create_location' %}"
-  hx-target="#venue-table"
-  hx-swap="beforeend"
+{% load partials %} {% partialdef location_form %}
+<dialog
+  hx-trigger="load"
+  hx-get="{% url 'create_location' %}"
+  hx-target="#dialog"
+  hx-swap="innerHTML"
 >
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Save</button>
-</form>
+  <div id="dialog"></div>
+
+  <button autofocus>Close</button>
+</dialog>
+<button id="newLocation">Add Venue</button>
+{% endpartialdef location_form %}

@@ -13,7 +13,7 @@ class VenueListView(ListView):
 class VenueCreateView(CreateView):
     model = Venue
     form_class = VenueForm
-    template_name = "locations/partials/new_location_form.html"
+    template_name = "locations/partials/location_form.html"
     success_url = reverse_lazy("venue_list")
 
     def form_valid(self, form):
