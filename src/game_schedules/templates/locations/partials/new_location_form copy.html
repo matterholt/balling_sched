@@ -1,9 +1,0 @@
-<form
-  method="post"
-  hx-post="{% url 'create_location' %}"
-  hx-target="#venue-table"
-  hx-swap="beforeend"
->
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Save</button>
-</form>

@@ -5,22 +5,9 @@
 </div>
 <div class="page_actions">
   <a href="{% url 'spreadsheet_upload' %}">Upload file</a>
-  <div>
-    <!--{% partialdef test-partial %}
-    <p>TEST-PARTIAL-CONTENT-test</p>
-    {% endpartialdef test-partial %}-->
-  </div>
-  {% include "locations/partials/new_location_form.html#location_form" %}
+  <a href="{% url 'create_location' %}">New Location</a>
 
-  <p>below</p>
-  <!--<button
-    hx-get="{% url 'create_location' %}"
-    hx-target="#dialog"
-    hx-swap="innerHTML"
-  >
-    Add Venue
-  </button>-->
-  <p>above</p>
+  <!--{% include "locations/partials/new_location_form.html#location_form" %}-->
 
   <ul id="venue-list">
     {% for venue in locations %}
@@ -28,7 +15,7 @@
       <li>{{ venue.name }} - {{ venue.city }}, {{ venue.state }}</li>
       <button
         hx-delete="{% url 'delete_location_entry' venue.pk %}"
-        hx-target="#venue-{{ venue.pk }}"
+        hx-target="venue-{{ venue.pk }"
         hx-swap="outerHTML"
       >
         delete {{venue.pk}}

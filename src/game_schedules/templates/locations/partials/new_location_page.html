@@ -1,0 +1,8 @@
+<div>
+  <form id="dialog" method="post" hx-post="{% url 'create_location' %}">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Add Another</button>
+    <button type="submit">Save</button>
+  </form>
+  <button id="newLocation">Add Venue</button>
+</div>
