@@ -10,8 +10,14 @@
   background-color: #cec8c866;
   border-radius: 10px;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
-
+.action_list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
 .vunue_list-item {
   display: flex;
   justify-content: space-between;

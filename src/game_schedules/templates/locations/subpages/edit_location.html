@@ -1,0 +1,11 @@
+{% extends "../../base.html" %} {% block content %}
+
+<div>
+  <h2>EDIT LOCATION {{pk}}</h2>
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Add Location</button>
+  </form>
+</div>
+
+{%endblock%}

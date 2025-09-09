@@ -1,0 +1,28 @@
+{% extends "../base.html" %} {% load partials %} {% block content %}
+<h1>Venues</h1>
+<div>
+  <a href="{%url 'index'%}">Main</a>
+</div>
+<div class="page_actions">
+  <div>
+    <h3>Django patterns</h3>
+    <div class="action_list">
+      <a href="{% url 'create_location' %}">New Location</a>
+      <a href="{% url 'spreadsheet_upload' %}">Upload file</a>
+    </div>
+  </div>
+  <div>
+    <h3>HTMX Patterns</h3>
+    <div class="action_list">
+      {% include "locations/partials/new_location_form.html#location_form" %}
+    </div>
+  </div>
+</div>
+<hr />
+<div>
+  <h3>Stored Locations</h3>
+  {% include "locations/partials/location_listing.html#location_listing" %}
+</div>
+{% load static %}
+<script src="{% static 'script.js' %}"></script>
+{%endblock%}

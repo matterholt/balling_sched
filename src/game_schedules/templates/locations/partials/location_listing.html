@@ -1,0 +1,18 @@
+{% load partials %} {% partialdef location_listing %}
+<ul id="venue-list">
+  {% for venue in locations %}
+  <div class="vunue-list-item" id="venue-{{ venue.pk }}">
+    <li>{{ venue.name }} - {{ venue.city }}, {{ venue.state }}</li>
+    <button
+      hx-delete="{% url 'delete_location_entry' venue.pk %}"
+      hx-target="#venue-{{ venue.pk }}"
+      hx-swap="outerHTML"
+    >
+      delete {{venue.pk}}
+    </button>
+    <a href="{% url 'edit_location' venue.pk  %}">EDIT</a>
+  </div>
+
+  {% endfor %}
+</ul>
+{% endpartialdef location_listing %}

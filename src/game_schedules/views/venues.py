@@ -6,17 +6,19 @@ from ..forms import VenueForm
 
 class VenueListView(ListView):
   model = Venue
-  template_name = "locations/locations_list.html"
+  template_name = "locations/locations.html"
   context_object_name = "locations"
 
-class VenueCreateView(CreateView):
-    model = Venue
-    form_class = VenueForm
-    template_name = "locations/partials/location_form.html"
-    success_url = reverse_lazy("venue_list")
+
 
 class VenueCreatePage(CreateView):
     model = Venue
     form_class = VenueForm
-    template_name = "locations/partials/new_location_page.html"
+    template_name = "locations/subpages/add_location.html"
+    success_url = reverse_lazy("locations_list")
+
+class VenueEditPage(UpdateView):
+    model = Venue
+    form_class = VenueForm
+    template_name = "locations/subpages/edit_location.html"
     success_url = reverse_lazy("locations_list")
