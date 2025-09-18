@@ -5,7 +5,10 @@
     <a class="button_icon" href="{% url 'detail_location' venue.pk  %}"
       ><i class="ph ph-pencil-simple"></i
     ></a>
-    <li>{{ venue.name }} - {{ venue.city }}, {{ venue.state }}</li>
+    <li class="venue_list-content">
+      <h3>{{ venue.name | title }}</h3>
+      <p>( {{ venue.short_name }} )</p>
+    </li>
     <button
       class="button_icon"
       hx-delete="{% url 'delete_location_entry' venue.pk %}"

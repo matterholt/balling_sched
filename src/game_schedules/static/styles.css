@@ -32,6 +32,11 @@
   grid-template-rows: 35px;
   align-items: center;
 }
+.venue_list-content {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
 .button_icon {
   place-self: center;
   padding: 0px;
@@ -50,4 +55,7 @@
     green
   );
   opacity: 0.75;
+}
+
+.venueDetail_address-block {
 }

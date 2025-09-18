@@ -1,16 +1,16 @@
 {% extends "../../base.html" %} {% block content %}
 
 <div>
-  <h2>EDIT LOCATION {{object.pk}}</h2>
-  <h3>{{ object.name }} ( {{ object.short_name }} )</h3>
+  <h2>LOCATION {{object.pk}}</h2>
+  <h3>{{ object.name }} <br />( {{ object.short_name }} )</h3>
 
   <div>
     <h4>ADDRESS</h4>
-    <p>
+    <div class="venueDetail_address-block">
       {{object.address}}<br />
       {{ object.city }}, {{ object.state }} <br />
       {{ object.zip_code }}
-    </p>
+    </>
   </div>
   <button
     hx-delete="{% url 'delete_location_entry' object.pk %}"
