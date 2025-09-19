@@ -1,25 +1,26 @@
 {% extends "../../base.html" %} {% block content %}
 
-<div>
-  <h2>LOCATION {{object.pk}}</h2>
-  <h3>{{ object.name }} <br />( {{ object.short_name }} )</h3>
+<div class="location_content_layout">
+  <div class="location_heading">
+    <a href={% url 'locations_list' %}>Location List</a>
 
-  <div>
+    <h2>{{ object.name | title}}</h2>
+    <h3>{{ object.short_name | upper }}</h3>
+  </div>
+
+  <div class="location_address">
     <h4>ADDRESS</h4>
     <div class="venueDetail_address-block">
       {{object.address}}<br />
       {{ object.city }}, {{ object.state }} <br />
       {{ object.zip_code }}
-    </>
+    </div>
   </div>
-  <button
-    hx-delete="{% url 'delete_location_entry' object.pk %}"
-    hx-target="#venue-{{ venue.pk }}"
-    hx-swap="outerHTML"
-  >
-    delete {{object.pk}}
-  </button>
-  <a href="{% url 'detail_location' object.pk  %}">EDIT</a>
+
+  <div class="location_actions">
+    <a href="{% url 'edit_location' object.pk  %}">EDIT</a>
+    <a href="{% url 'delete_location' object.pk  %}">DELETE</a>
+  </div>
 </div>
 
 {%endblock%}

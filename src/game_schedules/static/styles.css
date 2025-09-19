@@ -59,3 +59,31 @@
 
 .venueDetail_address-block {
 }
+
+.location_content_layout {
+  height: 520px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 3fr;
+  grid-template-areas:
+    "locHeading locHeading"
+    "locAddress locActions";
+}
+.location_heading {
+  grid-area: locHeading;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.location_address {
+  grid-area: locAddress;
+  padding: 10px;
+}
+
+.location_actions {
+  grid-area: locActions;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}

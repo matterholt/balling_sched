@@ -26,4 +26,4 @@ class VenueEditPage(VenueBaseView,UpdateView):
     template_name = "locations/subpages/edit_location.html"
 
 class VenueDeletePage(VenueBaseView,DeleteView):
-  pass
+  template_name = "locations/subpages/delete_location.html"
