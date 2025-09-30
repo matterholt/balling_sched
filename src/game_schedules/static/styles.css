@@ -88,3 +88,10 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+.storedLocation_actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}

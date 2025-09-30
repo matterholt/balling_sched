@@ -20,8 +20,13 @@
 </div>
 <hr />
 <div>
-  <h3>Stored Locations</h3>
-  <input type="text" id="search" placeholder="Search venues..." />
+  <div>
+    <h3>Stored Locations</h3>
+    <div class="storedLocation_actions">
+      <input type="text" id="searchBox" placeholder="Search venues..." />
+      <button id="storedLocation_searchAction-reset">reset</button>
+    </div>
+  </div>
   {% include "locations/partials/location_listing.html#location_listing" %}
 </div>
 {% load static %}

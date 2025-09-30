@@ -1,24 +1,24 @@
 {% load partials %} {% partialdef location_listing %}
 <ul class="venue_list" id="venue-list">
   {% for venue in locations %}
-  <div class="venue_list-item" id="venue-{{ venue.pk }}">
-    <a class="button_icon" href="{% url 'detail_location' venue.pk  %}"
-      <i class="ph ph-dots-nine"></i>
+  <li class="venue_list-item" id="venue-{{ venue.pk }}">
+    <a class="button_icon" href="{% url 'detail_location' venue.pk  %}">
+      <i class="ph ph-dots-three-outline-vertical"></i>
     </a>
-    <li class="venue_list-content">
-      <p>( {{ venue.short_name }} )</p>
+    <div class="venue_list-content">
+      <p>{{ venue.short_name | upper }}</p>
       <h3>{{ venue.name | title }}</h3>
       <p>{{ venue.city }}</p>
-    </li>
-    <button
+    </div>
+    <!--<button
       class="button_icon"
       hx-delete="{% url 'delete_location_entry' venue.pk %}"
       hx-target="#venue-{{ venue.pk }}"
       hx-swap="outerHTML"
     >
       <i class="ph ph-trash"></i>
-    </button>
-  </div>
+    </button>-->
+  </li>
 
   {% endfor %}
 </ul>
