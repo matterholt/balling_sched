@@ -3,11 +3,11 @@
   {% for venue in locations %}
   <div class="venue_list-item" id="venue-{{ venue.pk }}">
     <a class="button_icon" href="{% url 'detail_location' venue.pk  %}"
-      ><i class="ph ph-pencil-simple"></i
-    ></a>
+      <i class="ph ph-dots-nine"></i>
+    </a>
     <li class="venue_list-content">
-      <h3>{{ venue.name | title }}</h3>
       <p>( {{ venue.short_name }} )</p>
+      <h3>{{ venue.name | title }}</h3>
       <p>{{ venue.city }}</p>
     </li>
     <button
