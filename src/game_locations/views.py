@@ -7,8 +7,8 @@ from django.views.generic import (
     DeleteView,
     DetailView,
 )
-from ..models import Venue
-from ..forms import VenueForm
+from .models import Venue
+from .forms import VenueForm
 
 
 class VenueBaseView(View):

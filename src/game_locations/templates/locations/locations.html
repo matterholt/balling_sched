@@ -1,4 +1,4 @@
-{% extends "../base.html" %} {% load partials %} {% block content %}
+{% extends "./base.html" %} {% load partials %} {% block content %}
 <h1>Venues</h1>
 <div>
   <a href="{%url 'index'%}">Main</a>
@@ -8,7 +8,6 @@
     <h3>Django patterns</h3>
     <div class="action_list">
       <a href="{% url 'create_location' %}">New Location</a>
-      <a href="{% url 'spreadsheet_upload' %}">Upload file</a>
     </div>
   </div>
   <div>

@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "league.apps.LeagueConfig",
-    "game_schedules.apps.GameSchedulesConfig",
+    "game_locations.apps.GameLocationsConfig",
     "template_partials",
     "django.contrib.admin",
     "django.contrib.auth",
